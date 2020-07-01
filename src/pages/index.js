@@ -7,14 +7,13 @@ import Img from "gatsby-image"
 import styled from "@emotion/styled"
 
 import Layout from "../components/layout"
-import { TitleLg, Title, SubtitleLg, Subtitle } from "../components/typography"
+import { TitleLg, Title, SubtitleLg, Subtitle, MotionTitleLg, MotionTitle, MotionSubtitleLg, MotionSubtitle,  } from "../components/typography"
+import {easing, stagger, fadeStagger, fadeIn, fadeInUp} from "../animations/animations"
 
 const Container = styled.div`
   ${tw`
     container mx-auto px-4 md:px-6
   `}
-  /* Need to add max-width of 1024px here... */
-  /* max-width: 1024px; */
 `
 
 const Intro = styled(motion.section)`
@@ -25,7 +24,7 @@ const Intro = styled(motion.section)`
       ${tw`w-full lg:w-2/3 flex flex-col space-y-2 lg:space-y-4`}
     }
     .trailing {
-      ${tw`flex flex-col justify-center w-1/2 lg:w-1/3 h-32 md:h-64 mb-8 lg:mb-0 rounded-lg overflow-hidden`}
+      ${tw`flex flex-col justify-center w-1/3 md:w-1/2 lg:w-1/3 h-24 md:h-64 mb-8 lg:mb-0 rounded-lg overflow-hidden`}
       background: var(--bg3);
       img {
         ${tw`w-full h-full object-cover`}
@@ -35,7 +34,7 @@ const Intro = styled(motion.section)`
 `
 
 const Featured = styled(motion.section)`
-  ${tw`py-8 lg:py-12`}
+  ${tw`py-4 lg:py-12`}
   .featured-wrapper {
     ${tw`flex flex-col p-4 lg:p-10 space-y-2 lg:space-y-8 rounded-lg`}
     background: var(--bg2);
@@ -45,8 +44,8 @@ const Featured = styled(motion.section)`
   }
 `
 
-const FeaturedItem = styled.a`
-  ${tw`w-full lg:w-1/2 p-6 h-64 flex flex-col justify-between rounded-lg cursor-pointer transition ease-in-out duration-300 hover:shadow-xl`}
+const FeaturedItem = styled(motion.a)`
+  ${tw`w-full lg:w-1/2 p-6 h-64 flex flex-col justify-between rounded-lg cursor-pointer`}
   background: var(--bg3);
   ${Title} {
     ${tw`font-normal`}
@@ -72,50 +71,33 @@ const CTAs = styled(motion.section)`
   }
 `
 
-const CTAItem = styled.a`
-  ${tw`w-full lg:w-1/3 p-8 flex flex-col rounded-lg`}
+const CTAItem = styled(motion.a)`
+  ${tw`w-full lg:w-1/3 p-8 flex flex-col items-center md:items-start rounded-lg`}
   background: var(--bg2);
   ${Subtitle} {
     ${tw`mb-8`}
   }
 `
 
-const Button = styled.button`
-  ${tw`px-4 py-2 rounded font-semibold cursor-pointer transition ease-in-out duration-300`}
+const StyledButton = styled(motion.button)`
+  ${tw`px-5 py-3 lg:px-4 lg:py-2 inline-flex rounded-lg lg:rounded font-semibold cursor-pointer`}
   color: var(--bg);
   background: var(--foreground);
 `
 
-
-const easing = [0.6, -0.05, 0.01, 0.99];
-
-const fadeIn = {
-    initial: {
-      opacity: 0
-    },
-    animate: {
-      opacity: 1,
-      transition: {
-          duration: 0.4,
-          ease: easing
-      }
-    }
-};
-
-const fadeInUp = {
-    initial: {
-      opacity: 0,
-      y: 60
-    },
-    animate: {
-      opacity: 1,
-      y: 0,
-      transition: {
-          duration: 0.4,
-          ease: easing
-      }
-    }
-};
+const Button = ({ children }) => {
+  return (
+    <StyledButton
+      whileHover={{
+        scale: 1.025,
+      }}
+      whileTap={{ 
+        scale: .975,
+      }}>
+      { children }
+    </StyledButton>
+  )
+}
 
 const Index = () => {
 
@@ -133,16 +115,16 @@ const Index = () => {
 
   return (
       <Layout>
-        <Intro variants={fadeIn}>
+        <Intro>
           <Container>
-            <div className="intro-wrapper">
-              <div className="leading">
-                <TitleLg>Hi, I’m Austin</TitleLg>
-                <SubtitleLg>I am a software designer and developer living in Houston, Texas. Currently, I am leading the design for our design system at HP and moonlighting as a front-end developer at Paper Crowns.</SubtitleLg>
-              </div>
-              <div className="trailing">
-                <Img fluid={data.file.childImageSharp.fluid} alt="Austin standing looking relatively happy" draggable="false"/>
-              </div>
+            <div className="intro-wrapper" >
+              <motion.div variants={stagger} className="leading">
+                <MotionTitleLg variants={fadeInUp}>Hi, I’m Austin</MotionTitleLg>
+                <MotionSubtitleLg variants={fadeInUp}>I am a software designer and developer living in Houston, Texas. Currently, I am leading the design for our design system at HP and moonlighting as a front-end developer at Paper Crowns.</MotionSubtitleLg>
+              </motion.div>
+              <motion.div variants={fadeInUp} className="trailing">
+                <Img fluid={data.file.childImageSharp.fluid} alt="Austin standing looking relatively happy" draggable="false"></Img>
+              </motion.div>
             </div>
           </Container>
         </Intro>
@@ -151,8 +133,15 @@ const Index = () => {
           <Container>
             <div className="featured-wrapper">
               <Title bold>Featured projects</Title>
-              <div className="featured-items">
-                <FeaturedItem>
+              <motion.div variants={fadeStagger} className="featured-items">
+                <FeaturedItem
+                  variants={fadeIn}
+                  whileHover={{
+                    scale: 1.025,
+                  }}
+                  whileTap={{ 
+                    scale: .975,
+                  }}>
                   <div>
                     <Title>Redesigning and scaling a design system across HP</Title>
                     <Subtitle>Design Lead<span> • </span>Jul 2019 - Mar 2020</Subtitle>
@@ -162,7 +151,14 @@ const Index = () => {
                     <Tag>Design Systems</Tag>
                   </div>
                 </FeaturedItem>
-                <FeaturedItem>
+                <FeaturedItem
+                  variants={fadeIn}
+                  whileHover={{
+                    scale: 1.025,
+                  }}
+                  whileTap={{ 
+                    scale: .975,
+                  }}>
                   <div>
                     <Title>Building a flexible design system to meet varying business needs</Title>
                     <Subtitle>Design Lead<span> • </span>Jul 2019 - Mar 2020</Subtitle>
@@ -172,38 +168,38 @@ const Index = () => {
                     <Tag>Design Systems</Tag>
                   </div>
                 </FeaturedItem>
-              </div>
+              </motion.div>
             </div>
           </Container>
         </Featured>
 
-        <CTAs variants={fadeIn}>
+        <CTAs>
           <Container>
             <div className="ctas-wrapper">
               <Title bold>Take a deep dive</Title>
-              <div className="cta-items">
-                <CTAItem>
+              <motion.div variants={fadeStagger} className="cta-items">
+                <CTAItem variants={fadeIn}>
                   <div>
                     <Title>My work</Title>
                     <Subtitle>Check out the projects that I have worked on, designing and developing software</Subtitle>
                   </div>
                   <Button>Check it out</Button>
                 </CTAItem>
-                <CTAItem>
+                <CTAItem variants={fadeIn}>
                   <div>
                     <Title>My work</Title>
                     <Subtitle>Check out the projects that I have worked on, designing and developing software</Subtitle>
                   </div>
                   <Button>Check it out</Button>
                 </CTAItem>
-                <CTAItem>
+                <CTAItem variants={fadeIn}>
                   <div>
                     <Title>My work</Title>
                     <Subtitle>Check out the projects that I have worked on, designing and developing software</Subtitle>
                   </div>
                   <Button>Check it out</Button>
                 </CTAItem>
-              </div>
+              </motion.div>
             </div>
           </Container>
         </CTAs>

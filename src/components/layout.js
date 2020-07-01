@@ -8,6 +8,8 @@ import SEO from "../components/seo"
 import styled from "@emotion/styled"
 import { ThemeToggler } from 'gatsby-plugin-dark-mode'
 
+import {stagger} from "../animations/animations"
+
 const Header = styled.header`
   ${tw`py-5 lg:py-12 relative lg:static`}
   nav {
@@ -65,14 +67,6 @@ const Wrapper = styled(motion.div)`
 
 const Main = styled(motion.div)`
 `
-
-const stagger = {
-    animate: {
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-};
 
 const Layout = (props) => {
     return (

@@ -1,15 +1,17 @@
 import tw from "twin.macro"
 import React from "react"
 import styled from "@emotion/styled"
+import { motion } from "framer-motion"
 
 import SEO from "../components/seo"
 import Layout from "../components/layout";
+import {stagger, fadeInUp} from "../animations/animations"
 
-const Heading = styled.h1`
+const Heading = styled(motion.h1)`
   ${tw`text-2xl`}
 `
 
-const Text = styled.p`
+const Text = styled(motion.p)`
   ${tw`text-xl`}
   color: var(--mid-foreground);
 `
@@ -31,10 +33,10 @@ export default () => (
     <SEO title="Page Not Found" />
       <FourOFour>
         <Container>
-          <div>
-            <Heading>Oops!</Heading>
-            <Text>We can't find the page that you are looking for..</Text>
-          </div>
+          <motion.div variants={stagger}>
+            <Heading variants={fadeInUp}>Oops!</Heading>
+            <Text variants={fadeInUp}>We can't find the page that you are looking for..</Text>
+          </motion.div>
         </Container>
       </FourOFour>
   </Layout>
