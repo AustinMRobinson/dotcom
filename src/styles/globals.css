@@ -9,6 +9,7 @@ body {
   --bg: #EBEBEB;
   --bg2: #F3F3F3;
   --bg3: #ffffff;
+  --bg-75: rgba(255,255,255,.75);
   --light-foreground: #ABABAB;
   --mid-foreground: #505050;
   --foreground: #0F0F0F;
@@ -26,6 +27,7 @@ body.dark {
   --bg: #0F0F0F;
   --bg2: #171717;
   --bg3: #232323;
+  --bg-75: rgba(35,35,35,.75);
   --light-foreground: #737373;
   --mid-foreground: #919191;
   --foreground: #ffffff;

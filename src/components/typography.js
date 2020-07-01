@@ -3,7 +3,7 @@ import styled from "@emotion/styled"
 
 
 export const TitleLg = tw.h1`
-  text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight
+  text-5xl md:text-6xl lg:text-7xl font-medium leading-tight tracking-tight
 `
 
 export const Title = styled.h2`
