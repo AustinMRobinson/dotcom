@@ -2,21 +2,8 @@ import tw from "twin.macro"
 import React from "react"
 import SEO from "../components/seo"
 
-import github from "../images/github.svg"
 
 const logos = [
-  {
-    name: "gatsby",
-    logo: require("../images/gatsby.svg"),
-  },
-  {
-    name: "tailwind",
-    logo: require("../images/tailwind.svg"),
-  },
-  {
-    name: "emotion",
-    logo: require("../images/emotion.png"),
-  },
 ]
 
 const Wrapper = tw.div`
@@ -56,10 +43,10 @@ export default () => (
     <SEO title="Page Not Found" />
     <Main>
       <Logos>
-        {logos &&
+        {/* {logos &&
           logos.map(({ name, logo }, index) => (
             <Icon src={logo} alt={`${name} Logo`} key={index} />
-          ))}
+          ))} */}
       </Logos>
       <Heading>Oops!</Heading>
       <Text>We can't find the page that you are looking for..</Text>
@@ -69,7 +56,7 @@ export default () => (
           target="_blank"
           rel="noopener noreferrer"
         >
-          <SmallIcon src={github} alt="Github Icon" />
+          {/* <SmallIcon src={github} alt="Github Icon" /> */}
         </a>
       </Footer>
     </Main>

@@ -1,0 +1,25 @@
+import tw from "twin.macro"
+import styled from "@emotion/styled"
+
+
+export const TitleLg = tw.h1`
+  text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight
+`
+
+export const Title = styled.h2`
+  ${tw`text-2xl md:text-3xl leading-tight mb-2 tracking-tight`}
+  font-weight: ${props => props.bold ? 600 : 400};
+`
+
+export const SubtitleLg = styled.p`
+  ${tw`text-base md:text-lg lg:text-xl`}
+  color: var(--mid-foreground);
+`
+
+export const Subtitle = styled.p`
+  ${tw``}
+  color: var(--mid-foreground);
+  span {
+    ${tw`text-sm`}
+  }
+`

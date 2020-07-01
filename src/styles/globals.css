@@ -2,4 +2,33 @@
   Inject Tailwind's base styles and use the Tailwind Macro with emotion to use
   the rest of Tailwind's classes in the project
 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 @tailwind base;
+
+body {
+  --bg: #EBEBEB;
+  --bg2: #F3F3F3;
+  --bg3: #ffffff;
+  --light-foreground: #ABABAB;
+  --mid-foreground: #505050;
+  --foreground: #0F0F0F;
+  --foreground-50: rgba(15,15,15,0.5);
+  --foreground-75: rgba(15,15,15,0.75);
+
+  background-color: var(--bg);
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif;
+}
+
+body.dark {
+  -webkit-font-smoothing: antialiased;
+
+  --bg: #0F0F0F;
+  --bg2: #171717;
+  --bg3: #232323;
+  --light-foreground: #737373;
+  --mid-foreground: #919191;
+  --foreground: #ffffff;
+  --foreground-50: rgba(255,255,255,0.5);
+  --foreground-75: rgba(255,255,255,0.75);
+}
