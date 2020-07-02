@@ -1,6 +1,10 @@
 module.exports = {
   theme: {
-    extend: {},
+    extend: {
+      spacing: {
+        '01': "1px",
+      }
+    },
     container: {
       center: true,
       // padding: {

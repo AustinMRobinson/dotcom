@@ -44,7 +44,7 @@ const Featured = styled(motion.section)`
   }
 `
 
-const FeaturedItem = styled(motion.a)`
+const StyledFeaturedItem = styled(motion.a)`
   ${tw`w-full lg:w-1/2 p-6 h-64 flex flex-col justify-between rounded-lg cursor-pointer`}
   background: var(--bg3);
   ${Title} {
@@ -54,6 +54,23 @@ const FeaturedItem = styled(motion.a)`
     ${tw`flex space-x-2`}
   }
 `
+
+const FeaturedItem = ({ children }) => {
+  return (
+    <StyledFeaturedItem
+      variants={fadeIn}
+      whileHover={{
+        scale: 1.025,
+        boxShadow: "0 1rem 1.25rem 0 rgba(0,0,0,0.05)"
+      }}
+      whileTap={{ 
+        scale: .975,
+        boxShadow: "0 0.25rem 0.75rem 0 rgba(0,0,0,0.025)"
+      }}>
+        {children}
+      </StyledFeaturedItem>
+  )
+}
 
 const Tag = styled.a`
   ${tw`py-2 px-4 rounded-full uppercase font-semibold text-xs tracking-wide`}
@@ -134,14 +151,7 @@ const Index = () => {
             <div className="featured-wrapper">
               <Title bold>Featured projects</Title>
               <motion.div variants={fadeStagger} className="featured-items">
-                <FeaturedItem
-                  variants={fadeIn}
-                  whileHover={{
-                    scale: 1.025,
-                  }}
-                  whileTap={{ 
-                    scale: .975,
-                  }}>
+                <FeaturedItem>
                   <div>
                     <Title>Redesigning and scaling a design system across HP</Title>
                     <Subtitle>Design Lead<span> • </span>Jul 2019 - Mar 2020</Subtitle>
@@ -151,14 +161,7 @@ const Index = () => {
                     <Tag>Design Systems</Tag>
                   </div>
                 </FeaturedItem>
-                <FeaturedItem
-                  variants={fadeIn}
-                  whileHover={{
-                    scale: 1.025,
-                  }}
-                  whileTap={{ 
-                    scale: .975,
-                  }}>
+                <FeaturedItem>
                   <div>
                     <Title>Building a flexible design system to meet varying business needs</Title>
                     <Subtitle>Design Lead<span> • </span>Jul 2019 - Mar 2020</Subtitle>
@@ -203,6 +206,7 @@ const Index = () => {
             </div>
           </Container>
         </CTAs>
+
       </Layout>
   )
 }

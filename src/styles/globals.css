@@ -25,8 +25,8 @@ body.dark {
   -webkit-font-smoothing: antialiased;
 
   --bg: #0F0F0F;
-  --bg2: #171717;
-  --bg3: #232323;
+  --bg2: #151515;
+  --bg3: #1E1E1E;
   --bg-75: rgba(35,35,35,.75);
   --light-foreground: #737373;
   --mid-foreground: #919191;
