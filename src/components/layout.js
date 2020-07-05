@@ -1,5 +1,6 @@
 import tw from "twin.macro"
-import React, { useState }  from "react"
+// import React, { useState }  from "react"
+import React  from "react"
 import { motion } from "framer-motion"
 import { Link } from "gatsby"
 
@@ -57,66 +58,66 @@ const NavMenu = styled.div`
   }
 `
 
-const StyledBurger = styled(motion.button)`
-  ${tw`w-12 h-12 p-2 flex flex-col items-center justify-center space-y-2 cursor-pointer`}
-  span {
-    ${tw`w-8 h-01 transition ease-in-out duration-300`}
-    background: var(--mid-foreground);
-  }
-  &:hover {
-    span {
-      background: var(--foreground);
-    }
-  }
-`
+// const StyledBurger = styled(motion.button)`
+//   ${tw`w-12 h-12 p-2 flex flex-col items-center justify-center space-y-2 cursor-pointer`}
+//   span {
+//     ${tw`w-8 h-01 transition ease-in-out duration-300`}
+//     background: var(--mid-foreground);
+//   }
+//   &:hover {
+//     span {
+//       background: var(--foreground);
+//     }
+//   }
+// `
 
-const Path = props => (
-  <motion.path
-    fill="transparent"
-    strokeWidth="1"
-    stroke="var(--mid-foreground)"
-    strokeLinecap="round"
-    {...props}
-  />
-);
+// const Path = props => (
+//   <motion.path
+//     fill="transparent"
+//     strokeWidth="1"
+//     stroke="var(--mid-foreground)"
+//     strokeLinecap="round"
+//     {...props}
+//   />
+// );
 
-const variants = {
-  open: {
-    transition: { staggerChildren: 0.07, delayChildren: 0.2 }
-  },
-  closed: {
-    transition: { staggerChildren: 0.05, staggerDirection: -1 }
-  }
-};
+// const variants = {
+//   open: {
+//     transition: { staggerChildren: 0.07, delayChildren: 0.2 }
+//   },
+//   closed: {
+//     transition: { staggerChildren: 0.05, staggerDirection: -1 }
+//   }
+// };
 
-const Burger = ({ setIsOpen }) => {
-  return (
-    <StyledBurger onClick={() => setIsOpen(open => !open)}>
-      <svg width="23" height="23" viewBox="0 0 23 23">
-        <Path
-          variants={{
-            hidden: { d: "M 2 2.5 L 20 2.5" },
-            visible: { d: "M 3 16.5 L 17 2.5" }
-          }}
-        />
-        <Path
-          d="M 2 9.423 L 20 9.423"
-          variants={{
-            hidden: { opacity: 1 },
-            visible: { opacity: 0 }
-          }}
-          transition={{ duration: 0.1 }}
-        />
-        <Path
-          variants={{
-            hidden: { d: "M 2 16.346 L 20 16.346" },
-            visible: { d: "M 3 2.5 L 17 16.346" }
-          }}
-        />
-      </svg>
-    </StyledBurger>
-  )
-}
+// const Burger = ({ setIsOpen }) => {
+//   return (
+//     <StyledBurger onClick={() => setIsOpen(open => !open)}>
+//       <svg width="23" height="23" viewBox="0 0 23 23">
+//         <Path
+//           variants={{
+//             hidden: { d: "M 2 2.5 L 20 2.5" },
+//             visible: { d: "M 3 16.5 L 17 2.5" }
+//           }}
+//         />
+//         <Path
+//           d="M 2 9.423 L 20 9.423"
+//           variants={{
+//             hidden: { opacity: 1 },
+//             visible: { opacity: 0 }
+//           }}
+//           transition={{ duration: 0.1 }}
+//         />
+//         <Path
+//           variants={{
+//             hidden: { d: "M 2 16.346 L 20 16.346" },
+//             visible: { d: "M 3 2.5 L 17 16.346" }
+//           }}
+//         />
+//       </svg>
+//     </StyledBurger>
+//   )
+// }
 
 const Footer = styled.footer`
   ${tw`mt-6`}
@@ -163,7 +164,7 @@ const Main = styled(motion.div)`
 `
 
 const Layout = (props) => {
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
 
     return (
         <ThemeToggler>

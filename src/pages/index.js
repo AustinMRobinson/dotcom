@@ -1,14 +1,14 @@
 import tw from "twin.macro"
 import React from "react"
 import { motion } from "framer-motion"
-import { useStaticQuery, graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 
 import styled from "@emotion/styled"
 
 import Layout from "../components/layout"
-import { TitleLg, Title, SubtitleLg, Subtitle, MotionTitleLg, MotionTitle, MotionSubtitleLg, MotionSubtitle,  } from "../components/typography"
-import {easing, stagger, fadeStagger, fadeIn, fadeInUp} from "../animations/animations"
+import { Title, Subtitle, MotionTitleLg, MotionSubtitleLg } from "../components/typography"
+import { stagger, fadeStagger, fadeIn, fadeInUp } from "../animations/animations"
 
 const Container = styled.div`
   ${tw`
@@ -44,8 +44,8 @@ const Featured = styled(motion.section)`
   }
 `
 
-const StyledFeaturedItem = styled(motion.a)`
-  ${tw`w-full lg:w-1/2 p-6 h-64 flex flex-col justify-between rounded-lg cursor-pointer`}
+const StyledFeaturedItem = styled(motion.div)`
+  ${tw`p-6 h-64 flex flex-col justify-between rounded-lg cursor-pointer`}
   background: var(--bg3);
   ${Title} {
     ${tw`font-normal`}
@@ -55,24 +55,30 @@ const StyledFeaturedItem = styled(motion.a)`
   }
 `
 
-const FeaturedItem = ({ children }) => {
+const StyledLink = styled(Link)`
+  ${tw`w-full lg:w-1/2`}
+`
+
+const FeaturedItem = ({ children, to }) => {
   return (
-    <StyledFeaturedItem
-      variants={fadeIn}
-      whileHover={{
-        scale: 1.025,
-        boxShadow: "0 1rem 1.25rem 0 rgba(0,0,0,0.05)"
-      }}
-      whileTap={{ 
-        scale: .975,
-        boxShadow: "0 0.25rem 0.75rem 0 rgba(0,0,0,0.025)"
-      }}>
-        {children}
-      </StyledFeaturedItem>
+    <StyledLink to={to}>
+      <StyledFeaturedItem
+        variants={fadeIn}
+        whileHover={{
+          scale: 1.025,
+          boxShadow: "0 1rem 1.25rem 0 rgba(0,0,0,0.05)"
+        }}
+        whileTap={{ 
+          scale: .975,
+          boxShadow: "0 0.25rem 0.75rem 0 rgba(0,0,0,0.025)"
+        }}>
+          {children}
+        </StyledFeaturedItem>
+      </StyledLink>
   )
 }
 
-const Tag = styled.a`
+const Tag = styled.div`
   ${tw`py-2 px-4 rounded-full uppercase font-semibold text-xs tracking-wide`}
   color: var(--mid-foreground);
   background: var(--bg2);
@@ -96,6 +102,15 @@ const CTAItem = styled(motion.a)`
   }
 `
 
+const CTAIcon = styled.div`
+  ${tw`h-16 w-16 p-2 mb-6 inline-flex items-center justify-center rounded-lg`}
+  background: var(--bg3);
+  div {
+    ${tw`h-10 w-10 rounded`}
+    background: var(--light-foreground);
+  }
+`
+
 const StyledButton = styled(motion.button)`
   ${tw`px-5 py-3 lg:px-4 lg:py-2 inline-flex rounded-lg lg:rounded font-semibold cursor-pointer`}
   color: var(--bg);
@@ -116,22 +131,10 @@ const Button = ({ children }) => {
   )
 }
 
-const Index = () => {
-
-  const data = useStaticQuery(graphql`
-    query {
-      file(relativePath: {eq: "prof-pic.jpg"}) {
-        childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
+const Index = ({ data }) => {
 
   return (
-      <Layout>
+      <Layout title="Test">
         <Intro>
           <Container>
             <div className="intro-wrapper" >
@@ -140,7 +143,7 @@ const Index = () => {
                 <MotionSubtitleLg variants={fadeInUp}>I am a software designer and developer living in Houston, Texas. Currently, I am leading the design for our design system at HP and moonlighting as a front-end developer at Paper Crowns.</MotionSubtitleLg>
               </motion.div>
               <motion.div variants={fadeInUp} className="trailing">
-                <Img fluid={data.file.childImageSharp.fluid} alt="Austin standing looking relatively happy" draggable="false"></Img>
+                <Img fluid={data.file.childImageSharp.fluid} alt="Austin standing looking relatively happy"></Img>
               </motion.div>
             </div>
           </Container>
@@ -151,26 +154,23 @@ const Index = () => {
             <div className="featured-wrapper">
               <Title bold>Featured projects</Title>
               <motion.div variants={fadeStagger} className="featured-items">
-                <FeaturedItem>
-                  <div>
-                    <Title>Redesigning and scaling a design system across HP</Title>
-                    <Subtitle>Design Lead<span> • </span>Jul 2019 - Mar 2020</Subtitle>
-                  </div>
-                  <div className="tags">
-                    <Tag>Design</Tag>
-                    <Tag>Design Systems</Tag>
-                  </div>
-                </FeaturedItem>
-                <FeaturedItem>
-                  <div>
-                    <Title>Building a flexible design system to meet varying business needs</Title>
-                    <Subtitle>Design Lead<span> • </span>Jul 2019 - Mar 2020</Subtitle>
-                  </div>
-                  <div className="tags">
-                    <Tag>Design</Tag>
-                    <Tag>Design Systems</Tag>
-                  </div>
-                </FeaturedItem>
+
+                {data.featuredPosts.edges.map(({ node }) => (
+                  <FeaturedItem to={node.fields.slug} key={node.id}>
+                    <div>
+                      <Title>{node.frontmatter.title}</Title>
+                      <Subtitle>{node.frontmatter.role}<span> • </span>{node.frontmatter.date}</Subtitle>
+                    </div>
+                    <div className="tags">
+                      {node.frontmatter.tags.map(tag => {
+                        return (
+                          <Tag key={tag}>{tag}</Tag>
+                        )
+                      })}
+                    </div>
+                  </FeaturedItem>
+                ))}
+
               </motion.div>
             </div>
           </Container>
@@ -183,6 +183,9 @@ const Index = () => {
               <motion.div variants={fadeStagger} className="cta-items">
                 <CTAItem variants={fadeIn}>
                   <div>
+                    <CTAIcon>
+                      <div></div>
+                    </CTAIcon>
                     <Title>My work</Title>
                     <Subtitle>Check out the projects that I have worked on, designing and developing software</Subtitle>
                   </div>
@@ -190,6 +193,9 @@ const Index = () => {
                 </CTAItem>
                 <CTAItem variants={fadeIn}>
                   <div>
+                    <CTAIcon>
+                      <div></div>
+                    </CTAIcon>
                     <Title>My work</Title>
                     <Subtitle>Check out the projects that I have worked on, designing and developing software</Subtitle>
                   </div>
@@ -197,6 +203,9 @@ const Index = () => {
                 </CTAItem>
                 <CTAItem variants={fadeIn}>
                   <div>
+                    <CTAIcon>
+                      <div></div>
+                    </CTAIcon>
                     <Title>My work</Title>
                     <Subtitle>Check out the projects that I have worked on, designing and developing software</Subtitle>
                   </div>
@@ -210,5 +219,34 @@ const Index = () => {
       </Layout>
   )
 }
+
+export const query = graphql`
+  query heroImageAndfeaturedPosts {
+    file(relativePath: {eq: "prof-pic.jpg"}) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    featuredPosts: allMarkdownRemark (limit: 2)
+    {
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            date
+            role
+            tags
+          }
+        }
+      }
+    }
+  }
+`
 
 export default Index

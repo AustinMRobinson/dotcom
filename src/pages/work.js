@@ -3,7 +3,6 @@ import React from "react"
 import styled from "@emotion/styled"
 import { motion } from "framer-motion"
 
-import SEO from "../components/seo"
 import Layout from "../components/layout";
 import {stagger, fadeInUp} from "../animations/animations"
 
@@ -29,8 +28,7 @@ const Work = styled.section`
   }`
 
 export default () => (
-  <Layout>
-    <SEO title="My work" />
+  <Layout title="Testing 2">
       <Work>
         <Container>
           <motion.div variants={stagger}>
