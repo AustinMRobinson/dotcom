@@ -7,14 +7,10 @@ import Img from "gatsby-image"
 import styled from "@emotion/styled"
 
 import Layout from "../components/layout"
+import Container from "../components/container"
 import { Title, Subtitle, MotionTitleLg, MotionSubtitleLg } from "../components/typography"
 import { stagger, fadeStagger, fadeIn, fadeInUp } from "../animations/animations"
 
-const Container = styled.div`
-  ${tw`
-    container mx-auto px-4 md:px-6
-  `}
-`
 
 const Intro = styled(motion.section)`
   ${tw`py-10 md:py-20 lg:py-40`}
@@ -229,7 +225,10 @@ export const query = graphql`
         }
       }
     }
-    featuredPosts: allMarkdownRemark (limit: 2)
+    featuredPosts: allMarkdownRemark (
+      limit: 2
+      filter: {frontmatter: {company: {eq: "HP"}}}
+    )
     {
       edges {
         node {
