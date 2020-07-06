@@ -7,11 +7,11 @@ import { motion } from "framer-motion"
 import Layout from "../components/layout";
 import Container from "../components/container"
 import { Title, Subtitle, MotionTitleLg, TitleMd } from "../components/typography"
-import { stagger, fadeStagger, fadeIn, fadeInUp } from "../animations/animations"
+import { stagger, fadeStagger, fadeIn, fadeInUp, fadeInDelay } from "../animations/animations"
 
 
 const Hero = styled.section`
-  ${tw`pt-24 pb-16 text-center`}
+  ${tw`pt-8 pb-4 lg:pt-24 lg:pb-16 text-center`}
   ${Container} {
     ${tw`flex items-center justify-center`}
   }
@@ -23,9 +23,9 @@ const Featured = styled(motion.section)`
     ${tw`flex flex-col p-4 lg:p-10 space-y-2 lg:space-y-8 rounded-lg`}
     background: var(--bg2);
     .header {
-      ${tw`flex items-center space-x-6`}
+      ${tw`py-8 md:py-6 lg:py-0 flex flex-col lg:flex-row items-center lg:space-x-6 space-y-6 lg:space-y-0 text-center lg:text-left`}
       .logo {
-        ${tw`h-24 w-24 rounded-full flex-shrink-0`}
+        ${tw`h-16 w-16 lg:h-24 lg:w-24 rounded-full flex-shrink-0`}
         background: var(--foreground);
       }
       .info {
@@ -87,7 +87,7 @@ const Gallery = styled(motion.section)`
     }
   }
   .gallery-items {
-    ${tw`mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4`}
+    ${tw`mt-8 lg:mt-16 grid grid-cols-2 lg:grid-cols-4 gap-6`}
     div {
       ${tw`h-48 rounded`}
       background: var(--bg3);
@@ -171,23 +171,23 @@ export default ({ data }) => (
         </Container>
       </Featured>
 
-      <Gallery>
+      <Gallery variants={fadeInDelay}>
         <Container>
-          <div className="gallery-wrapper">
+          <div className="gallery-wrapper" variants={fadeIn}>
             <div className="heading">
               <TitleMd bold>Project Gallery</TitleMd>
               <Subtitle>Read about some of the work I did while working at Paper Crowns.</Subtitle>
             </div>
-            <div className="gallery-items">
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
+            <motion.div className="gallery-items" variants={stagger}>
+              <motion.div variants={fadeInUp}></motion.div>
+              <motion.div variants={fadeInUp}></motion.div>
+              <motion.div variants={fadeInUp}></motion.div>
+              <motion.div variants={fadeInUp}></motion.div>
+              <motion.div variants={fadeInUp}></motion.div>
+              <motion.div variants={fadeInUp}></motion.div>
+              <motion.div variants={fadeInUp}></motion.div>
+              <motion.div variants={fadeInUp}></motion.div>
+            </motion.div>
           </div>
         </Container>
       </Gallery>

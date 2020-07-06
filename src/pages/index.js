@@ -9,7 +9,7 @@ import styled from "@emotion/styled"
 import Layout from "../components/layout"
 import Container from "../components/container"
 import { Title, Subtitle, MotionTitleLg, MotionSubtitleLg } from "../components/typography"
-import { stagger, fadeStagger, fadeIn, fadeInUp } from "../animations/animations"
+import { stagger, fadeStagger, fadeIn, fadeInUp, fadeInDelay } from "../animations/animations"
 
 
 const Intro = styled(motion.section)`
@@ -172,7 +172,7 @@ const Index = ({ data }) => {
           </Container>
         </Featured>
 
-        <CTAs>
+        <CTAs variants={fadeInDelay}>
           <Container>
             <div className="ctas-wrapper">
               <Title bold>Take a deep dive</Title>

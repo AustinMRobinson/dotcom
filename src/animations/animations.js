@@ -13,6 +13,19 @@ export const fadeIn = {
     }
 };
 
+export const fadeInDelay = {
+    initial: {
+      opacity: 0
+    },
+    animate: {
+      opacity: 1,
+      duration: 0.4,
+      transition: {
+          delayChildren: 0.4,
+      }
+    }
+};
+
 export const fadeInUp = {
     initial: {
       opacity: 0,
