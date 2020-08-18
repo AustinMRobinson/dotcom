@@ -143,7 +143,7 @@ const Button = ({ children }) => {
 const Index = ({ data }) => {
 
   return (
-      <Layout title="Test">
+      <Layout title="Home">
         <Intro>
           <Container>
             <div className="intro-wrapper" >
