@@ -63,3 +63,12 @@ export const stagger = {
     }
   }
 };
+
+export const delayedStagger = {
+  animate: {
+    transition: {
+        delayChildren: 0.4,
+        staggerChildren: 0.2,
+    }
+  }
+};

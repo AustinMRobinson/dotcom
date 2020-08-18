@@ -13,7 +13,7 @@ import { stagger, fadeStagger, fadeIn, fadeInUp, fadeInDelay } from "../animatio
 
 
 const Intro = styled(motion.section)`
-  ${tw`py-10 md:py-20 lg:py-40`}
+  ${tw`pb-0 pt-0 py-10 md:py-20 lg:pt-32 lg:pb-40`}
   .intro-wrapper {
     ${tw`flex flex-col-reverse lg:flex-row items-center lg:space-x-32 text-center lg:text-left`}
     .leading {
@@ -24,6 +24,19 @@ const Intro = styled(motion.section)`
       background: var(--bg3);
       img {
         ${tw`w-full h-full object-cover`}
+      }
+    }
+  }
+`
+
+const ComingSoon = styled(motion.section)`
+  ${tw`py-4`}
+  .comingsoon-wrapper {
+    ${tw`flex flex-col items-center text-center p-8 lg:p-16 space-y-0 lg:space-y-2 rounded-lg`}
+    background: var(--bg2);
+    ${Subtitle} {
+      a {
+        color: var(--foreground-75)
       }
     }
   }
@@ -136,7 +149,10 @@ const Index = ({ data }) => {
             <div className="intro-wrapper" >
               <motion.div variants={stagger} className="leading">
                 <MotionTitleLg variants={fadeInUp}>Hi, I’m Austin</MotionTitleLg>
-                <MotionSubtitleLg variants={fadeInUp}>I am a software designer and developer living in Houston, Texas. Currently, I am leading the design for our design system at HP and moonlighting as a front-end developer at Paper Crowns.</MotionSubtitleLg>
+                <MotionSubtitleLg variants={fadeInUp}>
+                I am a software designer and developer living in Houston, Texas. 
+                Currently, I am leading the design for our design system at HP and moonlighting as a front-end developer at Paper Crowns.
+                </MotionSubtitleLg>
               </motion.div>
               <motion.div variants={fadeInUp} className="trailing">
                 <Img fluid={data.file.childImageSharp.fluid} alt="Austin standing looking relatively happy"></Img>
@@ -145,7 +161,16 @@ const Index = ({ data }) => {
           </Container>
         </Intro>
 
-        <Featured variants={fadeInUp}>
+        <ComingSoon variants={fadeInUp}>
+          <Container>
+            <div className="comingsoon-wrapper">
+              <Title bold>Content coming soon</Title>
+              <Subtitle>I’m in the process of redesigning my website. <br></br> Follow me on <a href="http://www.twitter.com/austinmrobinson">Twitter</a> to see when I launch it!</Subtitle>
+            </div>
+          </Container>
+        </ComingSoon>
+
+        {/* <Featured variants={fadeInUp}>
           <Container>
             <div className="featured-wrapper">
               <Title bold>Featured projects</Title>
@@ -210,7 +235,7 @@ const Index = ({ data }) => {
               </motion.div>
             </div>
           </Container>
-        </CTAs>
+        </CTAs> */}
 
       </Layout>
   )

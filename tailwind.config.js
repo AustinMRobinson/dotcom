@@ -1,5 +1,15 @@
 module.exports = {
   theme: {
+    typography: {
+      default: {
+        css: {
+          color: 'var(--foreground)',
+          h1: {
+            color: 'var(--foreground)',
+          },
+        }
+      }
+    },
     extend: {
       spacing: {
         '01': "1px",
@@ -40,5 +50,7 @@ module.exports = {
     }
   },
   variants: {},
-  plugins: []
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }

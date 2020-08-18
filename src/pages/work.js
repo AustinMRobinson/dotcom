@@ -7,7 +7,7 @@ import { motion } from "framer-motion"
 import Layout from "../components/layout";
 import Container from "../components/container"
 import { Title, Subtitle, MotionTitleLg, TitleMd } from "../components/typography"
-import { stagger, fadeStagger, fadeIn, fadeInUp, fadeInDelay } from "../animations/animations"
+import { stagger, fadeStagger, delayedStagger, fadeIn, fadeInUp, fadeInDelay } from "../animations/animations"
 
 
 const Hero = styled.section`
@@ -178,7 +178,7 @@ export default ({ data }) => (
               <TitleMd bold>Project Gallery</TitleMd>
               <Subtitle>Read about some of the work I did while working at Paper Crowns.</Subtitle>
             </div>
-            <motion.div className="gallery-items" variants={stagger}>
+            <motion.div className="gallery-items" variants={delayedStagger}>
               <motion.div variants={fadeInUp}></motion.div>
               <motion.div variants={fadeInUp}></motion.div>
               <motion.div variants={fadeInUp}></motion.div>

@@ -56,7 +56,11 @@ const NavMenu = styled.div`
       background: var(--bg3);
     }
   }
+  .active {
+    color: var(--foreground);
+  }
 `
+
 
 // const StyledBurger = styled(motion.button)`
 //   ${tw`w-12 h-12 p-2 flex flex-col items-center justify-center space-y-2 cursor-pointer`}
@@ -182,14 +186,14 @@ const Layout = (props) => {
                     </svg>
                   </NavLogo>
                   <MenuWrapper>
-                    <NavMenu>
-                        {/* <motion.div initial={false} animate={isOpen ? "visible" : "hidden"}>
+                    {/* <NavMenu>
+                        <motion.div initial={false} animate={isOpen ? "visible" : "hidden"}>
                           <Burger setIsOpen={setIsOpen} />
-                        </motion.div> */}
+                        </motion.div>
                         <Link to="/work">Work</Link>
                         <Link to="/lkdsnf">Blog</Link>
                         <Link to="/">About Me</Link>
-                    </NavMenu>
+                    </NavMenu> */}
                   </MenuWrapper>
                 </nav>
               </Container>
@@ -199,7 +203,7 @@ const Layout = (props) => {
                 { props.children }
             </Main>
 
-            <Footer>
+            {/* <Footer>
               <Container>
                 <div className="footer-wrapper">
                   <div className="leading">
@@ -216,7 +220,7 @@ const Layout = (props) => {
                   </div>
                 </div>
               </Container>
-            </Footer>
+            </Footer> */}
 
         </Wrapper>
         )}
