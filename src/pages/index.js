@@ -123,7 +123,7 @@ const CTAIcon = styled.div`
 const StyledButton = styled(motion.button)`
   ${tw`px-5 py-3 lg:px-4 lg:py-2 inline-flex rounded-lg lg:rounded font-semibold cursor-pointer`}
   color: ${props => props.secondary ? 'var(--bg)' : 'var(--foreground)' };
-  background: ${props => props.secondary ? 'var(--foreground)' : 'var(--bg2)'};
+  background: ${props => props.secondary ? 'var(--foreground)' : 'var(--bg3)'};
 `
 
 const Button = ({ children }) => {
@@ -148,7 +148,7 @@ const WorkGallery = styled(motion.section)`
       ${tw`mb-8 lg:mb-12`}
     }
     .gallery-items {
-      ${tw`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 md:gap-8`}
+      ${tw`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 col-gap-8 row-gap-20 md:row-gap-16 lg:row-gap-12`}
     }
   }
 `
@@ -198,12 +198,12 @@ const Index = ({ data }) => {
 
                 {data.galleryItems.edges.map(({ node }) => (
                   <GalleryItem variants={fadeIn}>
-                    <Img fluid={node.frontmatter.cover.childImageSharp.fluid} />
+                    <Img fluid={node.frontmatter.cover.childImageSharp.fluid} alt={node.frontmatter.title} draggable="false"/>
                     <div class="info">
                       <TitleSm bold>{node.frontmatter.title}</TitleSm>
                       <Subtitle>{node.frontmatter.role}</Subtitle>
                     </div>
-                    <a href={node.frontmatter.link}>
+                    <a href={node.frontmatter.link} target="_blank" rel="noreferrer">
                       <Button secondary>Visit Website</Button>
                     </a>
                   </GalleryItem>
