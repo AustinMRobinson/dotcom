@@ -28,6 +28,12 @@ module.exports = {
         path: `${__dirname}/src/blog-posts/`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/work-gallery/`,
+      },
+    },
     `gatsby-transformer-remark`,
     `gatsby-plugin-react-helmet`,
   ],

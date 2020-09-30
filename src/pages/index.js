@@ -8,8 +8,8 @@ import styled from "@emotion/styled"
 
 import Layout from "../components/layout"
 import Container from "../components/container"
-import { Title, Subtitle, MotionTitleLg, MotionSubtitleLg } from "../components/typography"
-import { stagger, fadeStagger, fadeIn, fadeInUp, fadeInDelay } from "../animations/animations"
+import { Title, Subtitle, TitleMd, TitleSm, MotionTitleLg, MotionSubtitleLg } from "../components/typography"
+import { stagger, fadeStagger, fadeIn, fadeInUp, fadeInDelay, delayedStagger } from "../animations/animations"
 
 
 const Intro = styled(motion.section)`
@@ -20,7 +20,7 @@ const Intro = styled(motion.section)`
       ${tw`w-full lg:w-2/3 flex flex-col space-y-2 lg:space-y-4`}
     }
     .trailing {
-      ${tw`flex flex-col justify-center w-1/3 md:w-1/2 lg:w-1/3 h-24 md:h-64 mb-8 lg:mb-0 rounded-lg overflow-hidden`}
+      ${tw`flex flex-col justify-center w-48 md:w-1/2 lg:w-1/3 h-48 md:h-64 mb-8 lg:mb-0 rounded-full md:rounded-lg overflow-hidden`}
       background: var(--bg3);
       img {
         ${tw`w-full h-full object-cover`}
@@ -122,15 +122,15 @@ const CTAIcon = styled.div`
 
 const StyledButton = styled(motion.button)`
   ${tw`px-5 py-3 lg:px-4 lg:py-2 inline-flex rounded-lg lg:rounded font-semibold cursor-pointer`}
-  color: var(--bg);
-  background: var(--foreground);
+  color: ${props => props.secondary ? 'var(--bg)' : 'var(--foreground)' };
+  background: ${props => props.secondary ? 'var(--foreground)' : 'var(--bg2)'};
 `
 
 const Button = ({ children }) => {
   return (
     <StyledButton
       whileHover={{
-        scale: 1.025,
+        scale: 1.0125,
       }}
       whileTap={{ 
         scale: .975,
@@ -139,6 +139,35 @@ const Button = ({ children }) => {
     </StyledButton>
   )
 }
+
+const WorkGallery = styled(motion.section)`
+  ${tw`pt-8 pb-16 lg:pt-12 pb-24`}
+  .gallery-wrapper {
+    ${tw`flex flex-col text-center`}
+    ${TitleMd} {
+      ${tw`mb-8 lg:mb-12`}
+    }
+    .gallery-items {
+      ${tw`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 md:gap-8`}
+    }
+  }
+`
+
+const GalleryItem = styled(motion.div)`
+  ${tw`flex flex-col text-center`}
+  img {
+    ${tw`rounded-lg`}
+  }
+  .info {
+    ${tw`mt-6 mb-4`}
+    ${TitleSm} {
+      ${tw`mb-0`}
+    }
+  }
+  ${StyledButton} {
+    ${tw`w-full justify-center`}
+  }
+`
 
 const Index = ({ data }) => {
 
@@ -161,14 +190,38 @@ const Index = ({ data }) => {
           </Container>
         </Intro>
 
-        <ComingSoon variants={fadeInUp}>
+        <WorkGallery variants={fadeInUp}>
+          <Container>
+            <div className="gallery-wrapper">
+              <TitleMd bold>Work gallery</TitleMd>
+              <motion.div variants={delayedStagger} className="gallery-items">
+
+                {data.galleryItems.edges.map(({ node }) => (
+                  <GalleryItem variants={fadeIn}>
+                    <Img fluid={node.frontmatter.cover.childImageSharp.fluid} />
+                    <div class="info">
+                      <TitleSm bold>{node.frontmatter.title}</TitleSm>
+                      <Subtitle>{node.frontmatter.role}</Subtitle>
+                    </div>
+                    <a href={node.frontmatter.link}>
+                      <Button secondary>Visit Website</Button>
+                    </a>
+                  </GalleryItem>
+                ))}
+
+              </motion.div>
+            </div>
+          </Container>
+        </WorkGallery>
+
+        {/* <ComingSoon variants={fadeInUp}>
           <Container>
             <div className="comingsoon-wrapper">
               <Title bold>Content coming soon</Title>
               <Subtitle>I’m in the process of redesigning my website. <br></br> Follow me on <a href="http://www.twitter.com/austinmrobinson">Twitter</a> to see when I launch it!</Subtitle>
             </div>
           </Container>
-        </ComingSoon>
+        </ComingSoon> */}
 
         {/* <Featured variants={fadeInUp}>
           <Container>
@@ -242,7 +295,7 @@ const Index = ({ data }) => {
 }
 
 export const query = graphql`
-  query heroImageAndfeaturedPosts {
+  query heroImageAndWorkGallery {
     file(relativePath: {eq: "prof-pic.jpg"}) {
       childImageSharp {
         fluid {
@@ -250,27 +303,61 @@ export const query = graphql`
         }
       }
     }
-    featuredPosts: allMarkdownRemark (
-      limit: 2
-      filter: {frontmatter: {company: {eq: "HP"}}}
+    galleryItems: allMarkdownRemark (
+      limit: 6
+      filter: {fileAbsolutePath: {regex: "\/work-gallery/"}}
     )
     {
       edges {
         node {
-          id
-          fields {
-            slug
-          }
           frontmatter {
+            cover {
+              childImageSharp {
+                fluid(maxWidth: 440) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
             title
-            date
             role
-            tags
+            link
           }
         }
       }
     }
   }
 `
+
+// export const query = graphql`
+//   query heroImageAndfeaturedPosts {
+//     file(relativePath: {eq: "prof-pic.jpg"}) {
+//       childImageSharp {
+//         fluid {
+//           ...GatsbyImageSharpFluid
+//         }
+//       }
+//     }
+//     featuredPosts: allMarkdownRemark (
+//       limit: 2
+//       filter: {frontmatter: {company: {eq: "HP"}}}
+//     )
+//     {
+//       edges {
+//         node {
+//           id
+//           fields {
+//             slug
+//           }
+//           frontmatter {
+//             title
+//             date
+//             role
+//             tags
+//           }
+//         }
+//       }
+//     }
+//   }
+// `
 
 export default Index

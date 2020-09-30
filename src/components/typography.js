@@ -16,6 +16,11 @@ export const Title = styled.h2`
   font-weight: ${props => props.bold ? 600 : 400};
 `
 
+export const TitleSm = styled.h3`
+  ${tw`text-lg md:text-xl leading-tight mb-1 tracking-tight`}
+  font-weight: ${props => props.bold ? 600 : 400};
+`
+
 export const SubtitleLg = styled.p`
   ${tw`text-base md:text-lg lg:text-xl`}
   color: var(--mid-foreground);
