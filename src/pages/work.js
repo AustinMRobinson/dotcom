@@ -41,6 +41,7 @@ const Featured = styled(motion.section)`
 const StyledFeaturedItem = styled(motion.div)`
   ${tw`p-6 h-64 flex flex-col justify-between rounded-lg cursor-pointer`}
   background: var(--bg3);
+  width: 100%;
   ${Title} {
     ${tw`font-normal`}
   }
@@ -138,7 +139,7 @@ export default ({ data }) => (
         </Container>
       </Featured>
 
-      <Featured variants={fadeInUp}>
+      {/* <Featured variants={fadeInUp}>
         <Container>
           <div className="featured-wrapper">
             <div className="header">
@@ -169,7 +170,7 @@ export default ({ data }) => (
             </motion.div>
           </div>
         </Container>
-      </Featured>
+      </Featured> */}
 
       <Gallery variants={fadeInDelay}>
         <Container>
@@ -198,7 +199,6 @@ export default ({ data }) => (
 export const query = graphql`
   query hpPosts {
     featuredPosts: allMarkdownRemark (
-      limit: 2
       filter: {frontmatter: {company: {eq: "HP"}}}
     )
     {

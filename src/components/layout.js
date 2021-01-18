@@ -44,22 +44,22 @@ const MenuWrapper = tw.div`
   p-4 lg:p-0 inset-0 fixed lg:static w-full h-screen lg:w-auto lg:h-auto hidden lg:flex flex-col z-10
 `
 
-const NavMenu = styled.div`
-  ${tw`p-6 lg:p-0 rounded-lg w-full h-full lg:w-auto lg:h-auto flex flex-col justify-center lg:justify-start text-center lg:text-left lg:flex-row lg:items-center space-y-4 lg:space-y-0 lg:space-x-4 lg:bg-transparent`}
-  background: var(--bg-75);
-  backdrop-filter: blur(1rem);
-  a {
-    ${tw`px-6 py-4 lg:px-4 lg:py-2 rounded-lg text-lg lg:text-sm font-semibold transition ease-in-out duration-300`}
-    color: var(--mid-foreground);
-    &:hover {
-      color: var(--foreground);
-      background: var(--bg3);
-    }
-  }
-  .active {
-    color: var(--foreground);
-  }
-`
+// const NavMenu = styled.div`
+//   ${tw`p-6 lg:p-0 rounded-lg w-full h-full lg:w-auto lg:h-auto flex flex-col justify-center lg:justify-start text-center lg:text-left lg:flex-row lg:items-center space-y-4 lg:space-y-0 lg:space-x-4 lg:bg-transparent`}
+//   background: var(--bg-75);
+//   backdrop-filter: blur(1rem);
+//   a {
+//     ${tw`px-6 py-4 lg:px-4 lg:py-2 rounded-lg text-lg lg:text-sm font-semibold transition ease-in-out duration-300`}
+//     color: var(--mid-foreground);
+//     &:hover {
+//       color: var(--foreground);
+//       background: var(--bg3);
+//     }
+//   }
+//   .active {
+//     color: var(--foreground);
+//   }
+// `
 
 
 // const StyledBurger = styled(motion.button)`
@@ -123,41 +123,41 @@ const NavMenu = styled.div`
 //   )
 // }
 
-const Footer = styled.footer`
-  ${tw`mt-6`}
-  .footer-wrapper {
-    ${tw`py-12 flex flex-col lg:flex-row justify-center lg:justify-between items-center border-t space-y-12 lg:space-y-0`}
-    border-color: var(--bg3);
-    .leading {
-      ${tw`w-full lg:w-auto flex flex-col lg:flex-row space-x-0 lg:space-x-4 text-center lg:text-left`}
-      a {
-        ${tw`px-6 py-4 lg:px-4 lg:py-2 rounded-lg text-lg lg:text-sm font-semibold transition ease-in-out duration-300`}
-        color: var(--mid-foreground);
-        &:hover {
-          color: var(--foreground);
-          background: var(--bg3);
-        }
-      }
-    }
-    .trailing {
-      ${tw`flex items-center space-x-8 lg:space-x-4`}
-    }
-  }
-` 
+// const Footer = styled.footer`
+//   ${tw`mt-6`}
+//   .footer-wrapper {
+//     ${tw`py-12 flex flex-col lg:flex-row justify-center lg:justify-between items-center border-t space-y-12 lg:space-y-0`}
+//     border-color: var(--bg3);
+//     .leading {
+//       ${tw`w-full lg:w-auto flex flex-col lg:flex-row space-x-0 lg:space-x-4 text-center lg:text-left`}
+//       a {
+//         ${tw`px-6 py-4 lg:px-4 lg:py-2 rounded-lg text-lg lg:text-sm font-semibold transition ease-in-out duration-300`}
+//         color: var(--mid-foreground);
+//         &:hover {
+//           color: var(--foreground);
+//           background: var(--bg3);
+//         }
+//       }
+//     }
+//     .trailing {
+//       ${tw`flex items-center space-x-8 lg:space-x-4`}
+//     }
+//   }
+// ` 
 
-const SocialLink = styled.a`
-  ${tw`flex items-center justify-center w-12 h-12 lg:w-8 lg:h-8 rounded-lg transition ease-in-out duration-300`}
-  div {
-    ${tw`w-4 h-4 rounded`}
-    background: var(--mid-foreground);
-  }
-  &:hover {
-    background: var(--bg3);
-    div {
-      background: var(--foreground);
-    }
-  }
-`
+// const SocialLink = styled.a`
+//   ${tw`flex items-center justify-center w-12 h-12 lg:w-8 lg:h-8 rounded-lg transition ease-in-out duration-300`}
+//   div {
+//     ${tw`w-4 h-4 rounded`}
+//     background: var(--mid-foreground);
+//   }
+//   &:hover {
+//     background: var(--bg3);
+//     div {
+//       background: var(--foreground);
+//     }
+//   }
+// `
 
 const Wrapper = styled(motion.div)`
   ${tw`flex flex-col min-w-full min-h-screen`}

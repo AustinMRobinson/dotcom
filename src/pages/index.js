@@ -1,15 +1,15 @@
 import tw from "twin.macro"
 import React from "react"
 import { motion } from "framer-motion"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Img from "gatsby-image"
 
 import styled from "@emotion/styled"
 
 import Layout from "../components/layout"
 import Container from "../components/container"
-import { Title, Subtitle, TitleMd, TitleSm, MotionTitleLg, MotionSubtitleLg } from "../components/typography"
-import { stagger, fadeStagger, fadeIn, fadeInUp, fadeInDelay, delayedStagger } from "../animations/animations"
+import { Subtitle, TitleMd, TitleSm, MotionTitleLg, MotionSubtitleLg } from "../components/typography"
+import { stagger, fadeIn, fadeInUp, delayedStagger } from "../animations/animations"
 
 
 const Intro = styled(motion.section)`
@@ -29,96 +29,96 @@ const Intro = styled(motion.section)`
   }
 `
 
-const ComingSoon = styled(motion.section)`
-  ${tw`py-4`}
-  .comingsoon-wrapper {
-    ${tw`flex flex-col items-center text-center p-8 lg:p-16 space-y-0 lg:space-y-2 rounded-lg`}
-    background: var(--bg2);
-    ${Subtitle} {
-      a {
-        color: var(--foreground-75)
-      }
-    }
-  }
-`
+// const ComingSoon = styled(motion.section)`
+//   ${tw`py-4`}
+//   .comingsoon-wrapper {
+//     ${tw`flex flex-col items-center text-center p-8 lg:p-16 space-y-0 lg:space-y-2 rounded-lg`}
+//     background: var(--bg2);
+//     ${Subtitle} {
+//       a {
+//         color: var(--foreground-75)
+//       }
+//     }
+//   }
+// `
 
-const Featured = styled(motion.section)`
-  ${tw`py-4 lg:py-12`}
-  .featured-wrapper {
-    ${tw`flex flex-col p-4 lg:p-10 space-y-2 lg:space-y-8 rounded-lg`}
-    background: var(--bg2);
-    .featured-items {
-      ${tw`flex flex-col lg:flex-row space-y-6 lg:space-y-0 lg:space-x-8`}
-    }
-  }
-`
+// const Featured = styled(motion.section)`
+//   ${tw`py-4 lg:py-12`}
+//   .featured-wrapper {
+//     ${tw`flex flex-col p-4 lg:p-10 space-y-2 lg:space-y-8 rounded-lg`}
+//     background: var(--bg2);
+//     .featured-items {
+//       ${tw`flex flex-col lg:flex-row space-y-6 lg:space-y-0 lg:space-x-8`}
+//     }
+//   }
+// `
 
-const StyledFeaturedItem = styled(motion.div)`
-  ${tw`p-6 h-64 flex flex-col justify-between rounded-lg cursor-pointer`}
-  background: var(--bg3);
-  ${Title} {
-    ${tw`font-normal`}
-  }
-  .tags {
-    ${tw`flex space-x-2`}
-  }
-`
+// const StyledFeaturedItem = styled(motion.div)`
+//   ${tw`p-6 h-64 flex flex-col justify-between rounded-lg cursor-pointer`}
+//   background: var(--bg3);
+//   ${Title} {
+//     ${tw`font-normal`}
+//   }
+//   .tags {
+//     ${tw`flex space-x-2`}
+//   }
+// `
 
-const StyledLink = styled(Link)`
-  ${tw`w-full lg:w-1/2`}
-`
+// const StyledLink = styled(Link)`
+//   ${tw`w-full lg:w-1/2`}
+// `
 
-const FeaturedItem = ({ children, to }) => {
-  return (
-    <StyledLink to={to}>
-      <StyledFeaturedItem
-        variants={fadeIn}
-        whileHover={{
-          scale: 1.025,
-          boxShadow: "0 1rem 1.25rem 0 rgba(0,0,0,0.05)"
-        }}
-        whileTap={{ 
-          scale: .975,
-          boxShadow: "0 0.25rem 0.75rem 0 rgba(0,0,0,0.025)"
-        }}>
-          {children}
-        </StyledFeaturedItem>
-      </StyledLink>
-  )
-}
+// const FeaturedItem = ({ children, to }) => {
+//   return (
+//     <StyledLink to={to}>
+//       <StyledFeaturedItem
+//         variants={fadeIn}
+//         whileHover={{
+//           scale: 1.025,
+//           boxShadow: "0 1rem 1.25rem 0 rgba(0,0,0,0.05)"
+//         }}
+//         whileTap={{ 
+//           scale: .975,
+//           boxShadow: "0 0.25rem 0.75rem 0 rgba(0,0,0,0.025)"
+//         }}>
+//           {children}
+//         </StyledFeaturedItem>
+//       </StyledLink>
+//   )
+// }
 
-const Tag = styled.div`
-  ${tw`py-2 px-4 rounded-full uppercase font-semibold text-xs tracking-wide`}
-  color: var(--mid-foreground);
-  background: var(--bg2);
-`
+// const Tag = styled.div`
+//   ${tw`py-2 px-4 rounded-full uppercase font-semibold text-xs tracking-wide`}
+//   color: var(--mid-foreground);
+//   background: var(--bg2);
+// `
 
-const CTAs = styled(motion.section)`
-  ${tw`py-12 lg:py-24 text-center md:text-left`}
-  .ctas-wrapper {
-    ${tw`flex flex-col space-y-4 lg:space-y-8`}
-    .cta-items {
-      ${tw`flex flex-col lg:flex-row space-y-6 lg:space-y-0 lg:space-x-8`}
-    }
-  }
-`
+// const CTAs = styled(motion.section)`
+//   ${tw`py-12 lg:py-24 text-center md:text-left`}
+//   .ctas-wrapper {
+//     ${tw`flex flex-col space-y-4 lg:space-y-8`}
+//     .cta-items {
+//       ${tw`flex flex-col lg:flex-row space-y-6 lg:space-y-0 lg:space-x-8`}
+//     }
+//   }
+// `
 
-const CTAItem = styled(motion.a)`
-  ${tw`w-full lg:w-1/3 p-8 flex flex-col items-center md:items-start rounded-lg`}
-  background: var(--bg2);
-  ${Subtitle} {
-    ${tw`mb-8`}
-  }
-`
+// const CTAItem = styled(motion.a)`
+//   ${tw`w-full lg:w-1/3 p-8 flex flex-col items-center md:items-start rounded-lg`}
+//   background: var(--bg2);
+//   ${Subtitle} {
+//     ${tw`mb-8`}
+//   }
+// `
 
-const CTAIcon = styled.div`
-  ${tw`h-16 w-16 p-2 mb-6 inline-flex items-center justify-center rounded-lg`}
-  background: var(--bg3);
-  div {
-    ${tw`h-10 w-10 rounded`}
-    background: var(--light-foreground);
-  }
-`
+// const CTAIcon = styled.div`
+//   ${tw`h-16 w-16 p-2 mb-6 inline-flex items-center justify-center rounded-lg`}
+//   background: var(--bg3);
+//   div {
+//     ${tw`h-10 w-10 rounded`}
+//     background: var(--light-foreground);
+//   }
+// `
 
 const StyledButton = styled(motion.button)`
   ${tw`px-5 py-3 lg:px-4 lg:py-2 inline-flex rounded-lg lg:rounded font-semibold cursor-pointer`}

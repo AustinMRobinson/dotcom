@@ -18,17 +18,41 @@ const SmallContainer = styled.div`
 `
 
 const BlogHero = styled.section`
-    ${tw`py-12 text-center`}
+    ${tw`pt-12 pb-8 md:pb-12 text-center`}
     div {
         ${tw`flex flex-col space-y-4`}
     }
 `
 
 const BlogContent = styled.section`
-    ${tw`py-8`}
+    ${tw`pt-8 pb-16`}
     ${SmallContainer} {
         div {
-            ${tw`prose`}
+            /* ${tw`prose`} */
+        }
+        h1, h2 {
+            /* font-weight: 600; */
+            margin-top: 2rem;
+        }
+        h1 {
+            ${tw`text-2xl md:text-3xl font-medium leading-tight mb-2 tracking-tight`}
+            /* font-size: 2rem; */
+            /* margin-bottom: 1rem; */
+            &:first-of-type {
+                margin-top: 0;
+            }
+        }
+        h2 {
+            ${tw`text-lg md:text-xl font-medium leading-tight mb-1 tracking-tight`}
+            font-size: 1.5rem;
+            /* margin-bottom: 0.75rem; */
+        }
+        p {
+            margin-bottom: 0.75rem;
+            color: var(--foreground-75);
+            a {
+                text-decoration: underline;
+            }
         }
     }
 `
@@ -37,7 +61,7 @@ const BlogTemplate = ({ data }) => {
     const post = data.markdownRemark
 
     return (
-        <Layout>
+        <Layout title={post.frontmatter.title}>
             <BlogHero>
                 <Container>
                     <div>
