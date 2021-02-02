@@ -24,6 +24,7 @@ export const TitleSm = styled.h3`
 export const SubtitleLg = styled.p`
   ${tw`text-base md:text-lg lg:text-xl`}
   color: var(--mid-foreground);
+  font-weight: ${props => props.bold ? 600 : 400};
 `
 
 export const Subtitle = styled.p`
