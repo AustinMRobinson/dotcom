@@ -9,7 +9,7 @@ import { variant } from 'styled-system'
 
 import Layout from "../components/layout"
 import Container from "../components/container"
-import { Subtitle, SubtitleLg, Title, TitleMd, TitleLg, MotionTitleLg, } from "../components/typography"
+import { Subtitle, SubtitleLg, Title, TitleMd, MotionTitleLg } from "../components/typography"
 import { fadeStagger, fadeIn, fadeInUp } from "../animations/animations"
 
 
@@ -261,7 +261,7 @@ const Contact = styled(motion.section)`
     }
 `
 
-const Footer = styled.footer`
+const Footer = styled(motion.footer)`
     ${tw`py-8 mt-12 md:mt-16`}
     .footer-wrapper {
         ${tw`text-center`}
@@ -582,9 +582,9 @@ const Tesla = ({ data }) => {
                                                 <div className="cta">
                                                     <SubtitleLg bold>{cta.subtitle}</SubtitleLg>
                                                     <Subtitle>{cta.description}</Subtitle>
-                                                    <a href={cta.link}>
+                                                    <Link to={cta.link}>
                                                         <Button secondary="true">{cta.buttonLabel}</Button>
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                             ))}
                                         </div>
@@ -703,15 +703,15 @@ const Tesla = ({ data }) => {
                                 <a href="mailto:austinrobinsondesign@gmail.com"><Button variant="primary">Send me an email</Button></a>
                             </div>
                             <div className="others">
-                                <a href="https://drive.google.com/file/d/15cWYOCcbrhd6ufRFvDZDt6jR7HmouIEG/view?usp=sharing" target="_blank"><Button variant="secondary">Resume</Button></a>
-                                <a href="https://drive.google.com/file/d/1SbHz95k2E4icn-FpB0J7vlyXYWZsX5Q3/view?usp=sharing" target="_blank"><Button variant="secondary">Cover Letter</Button></a>
-                                <a href="https://twitter.com/AustinMRobinson" target="_blank"><Button variant="secondary">Twitter</Button></a>
+                                <a href="https://drive.google.com/file/d/15cWYOCcbrhd6ufRFvDZDt6jR7HmouIEG/view?usp=sharing"><Button variant="secondary">Resume</Button></a>
+                                <a href="https://drive.google.com/file/d/1SbHz95k2E4icn-FpB0J7vlyXYWZsX5Q3/view?usp=sharing"><Button variant="secondary">Cover Letter</Button></a>
+                                <a href="https://twitter.com/AustinMRobinson"><Button variant="secondary">Twitter</Button></a>
                             </div>
                         </div>
                     </div>
                 </Container>
             </Contact>
-            <Footer>
+            <Footer variants={fadeIn}>
                 <Container>
                     <div className="footer-wrapper">
                         <Subtitle>

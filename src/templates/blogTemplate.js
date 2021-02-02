@@ -54,6 +54,15 @@ const BlogContent = styled.section`
                 text-decoration: underline;
             }
         }
+        ul {
+            ${tw`list-disc ml-6 lg:ml-8 space-y-2`}
+        }
+        img {
+            ${tw`rounded-lg`}
+        }
+        em {
+            ${tw`block mt-2 mb-5`}
+        }
     }
 `
 

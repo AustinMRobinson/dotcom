@@ -12,9 +12,9 @@ tags: [
 
 # Overview
 
-Before learning about how we created the visual style for Veneer version 3, I would recommend reading more about the [overall Veneer 3 journey](https://docs.google.com/document/d/1bOvFEwyj2hVwa9O3c3znvgmIziUZ0ioGCrkirXfQIVg/edit?usp=sharing) and how it was scaled across HP using grassroots adoption.
+Before learning about how we created the visual style for Veneer version 3, I would recommend reading more about the [overall Veneer 3 journey](https://www.austinmrobinson.com/redesigning-and-scaling-a-design-system/) and how it was scaled across HP using grassroots adoption.
 
-A huge part of rebuilding Veneer from the ground up for version 3 was tied to creating a new, more scalable visual style. 
+A huge part of rebuilding Veneer from the ground up for version 3 was tied to creating a new, more scalable visual style.
 
 # Objectives
 
@@ -49,65 +49,49 @@ If you have not read the case study on the Veneer 3 journey from start to finish
 
 After this workshop with Print, we hit the ground running. We finally had a visual style to work with, so we could start building components. We needed to refine the layer system so that it could fit all of the use cases that we’d run into.
 
-<p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image1.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-![alt_text](images/image1.png "image_tooltip")
+![The first version of our layer system.](../images/layer-system-v1.png "The first version of our layer system.")
 _The first version of our layer system._
 
 With this first version, we were able to build out some of the first components for Veneer 3. The canvas layers evolved into what we call out elevation system, which establishes the z value of the containing element. This paired with the content layers gives a clear hierarchy to the style of each component and how they relate with one another. As a component is interacted with (hover, active/pressed, dragged, etc.), it ascends higher in the content and/or canvas layers.
 
-<p id="gdcalert2" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image2.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert3">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-![alt_text](images/image2.png "image_tooltip")
+![The visual style of the first components we made, based on the initial layer system.](../images/layer-system-v1-2.png "The visual style of the first components we made, based on the initial layer system.")
 _The visual style of the first components we made, based on the initial layer system._
 
 With that layer system in place, we started building. However, we quickly realized that we needed to expand the layer system to something a bit more comprehensive. One of the main bits of feedback we received early on is that there wasn’t much blue in the mocks that people started building with the components. So, we decided to include more blue in the updated layer system. We also pulled out the canvas layers and put them in their own elevation system.
 
-<p id="gdcalert3" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image3.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert4">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-![alt_text](images/image3.png "image_tooltip")
+![The updated layer system, adding much more nuance and detail to each layer, including “Major” and “Minor” levels.](../images/current-layer-system.png "The updated layer system, adding much more nuance and detail to each layer, including “Major” and “Minor” levels.")
 _The updated layer system, adding much more nuance and detail to each layer, including “Major” and “Minor” levels._
 
-With this expanded layer system, it was easier for folks to understand the different color tiers we were leveraging. Most interactions would result in “Minor” jumps up the layers, but some warranted “Major” jumps. Once we had this in place, we were able to really double down and build out the rest of the components in the system. 
+With this expanded layer system, it was easier for folks to understand the different color tiers we were leveraging. Most interactions would result in “Minor” jumps up the layers, but some warranted “Major” jumps. Once we had this in place, we were able to really double down and build out the rest of the components in the system.
 
 ## Iconography
 
 Since Veneer 3 went towards a new icon style that the Print organization had created, the visual style of the system needed to match them. First, we cleaned up the icon style and built out a library of icons for the new version of the system. We created four styles: Round Lined, Round Filled, Sharp Lined, and Sharp Filled. This gave us the flexibility we were looking for in creating a flexible system. These icons, paired with the colors from the layer system, became the foundation for the overall visual style. Our default style, in alignment with the HP brand, was round. So our goal was to ensure that the round style had concentric corners across the board. As for sharp, everything for that style had no corner radius at all. 
 
-<p id="gdcalert4" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image4.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert5">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-![alt_text](images/image4.png "image_tooltip")
+![An example of how the iconography corners influenced the overall round visual style, using concentric corners.](../images/concentric-corners.png "An example of how the iconography corners influenced the overall round visual style, using concentric corners.")
 _An example of how the iconography corners influenced the overall round visual style, using concentric corners._
 
 ## System colors
 
 At the same time, we worked to establish what we call our “System” colors, which are a subset of our global color palette that we use for the components. They work across the three color modes in Veneer. A huge part of creating these system colors was providing colors that (if used properly) would ensure that designers and developers were creating accessible experiences. If you’d like to read more about Veneer’s modes, you can do so [here](https://drive.google.com/file/d/1yC0RXXHB0HC9cQKWLvFsLCKVqUaRc7sQ/view?usp=sharing).
 
-<p id="gdcalert5" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image5.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert6">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-![alt_text](images/image5.png "image_tooltip")
+![A few colors from the Veneer system colors for light and dark mode.](../images/system-colors.png "A few colors from the Veneer system colors for light and dark mode.")
 
 _A few colors from the Veneer system colors for light and dark mode._
 
-After a long time (~9-12 months), we had created a component library based on the new Veneer design language, layer system, and system colors. This was a huge step for us, and a massive upgrade from what we had in Veneer 2. We also gained many allies during this period, and all major groups signed on to use Veneer for their products during our beta period. 
+After a long time (~9-12 months), we had created a component library based on the new Veneer design language, layer system, and system colors. This was a huge step for us, and a massive upgrade from what we had in Veneer 2. We also gained many allies during this period, and all major groups signed on to use Veneer for their products during our beta period.
 
-<p id="gdcalert6" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image6.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert7">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-![alt_text](images/image6.png "image_tooltip")
+![A grouping of Veneer 3 components in light and dark modes.](../images/final-veneer3.png "A grouping of Veneer 3 components in light and dark modes.")
 _A grouping of Veneer 3 components in light and dark modes._
 
 # New scalability and flexibility
 
-<p id="gdcalert7" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image7.gif). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert8">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-![alt_text](images/image7.gif "image_tooltip")
+![A demo of the flexibility of Veneer 3’s visual style, using modes, shape, and density.](../images/flexibility-demo.gif "A demo of the flexibility of Veneer 3’s visual style, using modes, shape, and density.")
 _A demo of the flexibility of Veneer 3’s visual style, using modes, shape, and density._
 
 Now Veneer provided modes (light, dark, and high contrast), shapes (round, sharp), and densities (standard, high) to all users of the system! This level of flexibility is unlike anything else that existed at HP. With this, many of the organizations and products that had previously been unable to use Veneer now decided to migrate to using the system. The current iteration has met all of the needs of the many different use cases at the company, and is constantly evolving to meet more as they come along. These properties are set at the top level of an application and require very little setup from a development perspective.
 
-<p id="gdcalert8" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image8.gif). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert9">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-![alt_text](images/image8.gif "image_tooltip")
+![A demo of the Veneer mode switcher in Figma using the “Themer” plugin.](../images/plugin-demo.gif "A demo of the Veneer mode switcher in Figma using the “Themer” plugin.")
 _A demo of the Veneer mode switcher in Figma using the “Themer” plugin._
 
 On the design side, it was important to give designers their most requested feature: a dark mode switcher. So using the [Themer](https://www.figma.com/community/plugin/731176732337510831/Themer) plugin, I was able to give designers the capability of turning all of their mocks to dark mode with a few clicks. This is enabled out of the box, so all they need to do is use the Veneer components and the system colors. Both of these are provided as libraries for anyone to use.
