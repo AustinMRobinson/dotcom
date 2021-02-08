@@ -23,21 +23,40 @@ const Intro = styled(motion.section)`
             }
         }
         .round1 {
-            ${tw`p-12 rounded-lg mb-10`}
+            ${tw`p-6 lg:p-12 rounded-lg mb-6 lg:mb-10`}
             background: var(--bg3);
             .top {
                 ${tw`cursor-pointer`}
                 .overline {
-                    ${tw`font-semibold uppercase tracking-wide mb-1`}
+                    ${tw`font-semibold uppercase tracking-wide mb-0 md:mb-1`}
                     color: var(--mid-foreground);
+                    @media screen and (max-width: 768px) {
+                        ${tw`text-xs`}
+                    }
+                }
+                ${Title} {
+                    ${tw`mb-0`}
                 }
             }
             .bottom {
-                ${tw`mt-6 rounded-lg overflow-hidden`}
+                ${tw`mt-3 lg:mt-6 rounded-lg overflow-hidden`}
                 border: 1px solid var(--bg);
                 box-shadow: 0 0.75rem 1.25rem var(--light-bg);
                 iframe {
                     min-height: 33.25rem;
+                    transition: min-height 0.3s ease-in-out;
+                    @media screen and (max-width: 996px) {
+                        min-height: 26.5rem;
+                    }
+                    @media screen and (max-width: 768px) {
+                        min-height: 22.5rem;
+                    }
+                    @media screen and (max-width: 576px) {
+                        min-height: 18rem;
+                    }
+                    @media screen and (max-width: 420px) {
+                        min-height: 13rem;
+                    }
                 }
             }
         }
