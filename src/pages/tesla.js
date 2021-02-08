@@ -1,6 +1,6 @@
 import tw from "twin.macro"
-import React from "react"
-import { motion } from "framer-motion"
+import React, { useState } from "react"
+import { AnimatePresence, motion } from "framer-motion"
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 
@@ -20,6 +20,25 @@ const Intro = styled(motion.section)`
             ${tw`mb-8 lg:mb-12`}
             ${MotionTitleLg} {
                 ${tw`text-center`}
+            }
+        }
+        .round1 {
+            ${tw`p-12 rounded-lg mb-10`}
+            background: var(--bg3);
+            .top {
+                ${tw`cursor-pointer`}
+                .overline {
+                    ${tw`font-semibold uppercase tracking-wide mb-1`}
+                    color: var(--mid-foreground);
+                }
+            }
+            .bottom {
+                ${tw`mt-6 rounded-lg overflow-hidden`}
+                border: 1px solid var(--bg);
+                box-shadow: 0 0.75rem 1.25rem var(--light-bg);
+                iframe {
+                    min-height: 33.25rem;
+                }
             }
         }
         .questions {
@@ -321,6 +340,8 @@ const Button = ({ children, variant }) => {
 
 const Tesla = ({ data }) => {
 
+    const [isOpen, setIsOpen] = useState(true);
+
     const pageData = {
         intro: {
             title: 'Hello Tesla!',
@@ -549,11 +570,25 @@ const Tesla = ({ data }) => {
 
     return (
         <Layout title="Hello Tesla!">
-            <Intro variants={fadeInUp}>
+            <Intro>
                 <Container>
                     <div className="intro-wrapper">
                         <div className="top">
                             <MotionTitleLg>{intro.title}</MotionTitleLg>
+                        </div>
+                        <div className="round1">
+                            <motion.div className="top" onClick={() => setIsOpen(!isOpen)}>
+                                <div className="overline">Update</div>
+                                <Title>Round 1 Interview Deck</Title>
+                            </motion.div>
+                            <AnimatePresence initial={false}>
+                            {isOpen && (
+                                <motion.div className="bottom"
+                                >
+                                    <iframe width="100%" height="100%" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FLCvBGyhy3D1oA23HBmMECe%2FComponent-Process-Presentation-Tesla%3Fnode-id%3D1%253A1876%26viewport%3D-4146%252C389%252C0.07698871195316315%26frame-preset-name%3DDesktop%26scaling%3Dscale-down-width" allowfullscreen></iframe>
+                                </motion.div>
+                            )}
+                            </AnimatePresence>
                         </div>
                         <div className="questions">
                             {intro.questions.map(question => (
@@ -596,7 +631,7 @@ const Tesla = ({ data }) => {
                     </div>
                 </Container>
             </Intro>
-            <Experience variants={fadeInUp} id="experience">
+            <Experience id="experience">
                 <Container>
                     <div className="experience-wrapper">
                         <div className="top">
@@ -641,7 +676,7 @@ const Tesla = ({ data }) => {
                     </div>
                 </Container>
             </Experience>
-            <Recommendations variants={fadeInUp}>
+            <Recommendations>
                 <Container>
                     <div className="recommendation-wrapper">
                         <div className="top">
@@ -667,7 +702,7 @@ const Tesla = ({ data }) => {
                     </div>
                 </Container>
             </Recommendations>
-            <Featured variants={fadeInUp} id="work">
+            <Featured id="work">
                 <Container>
                     <div className="top">
                         <TitleMd>{work.title}</TitleMd>
@@ -692,7 +727,7 @@ const Tesla = ({ data }) => {
                     </div>
                 </Container>
             </Featured>
-            <Contact variants={fadeInUp}>
+            <Contact>
                 <Container>
                     <div className="contact-wrapper">
                         <div className="top">
@@ -711,7 +746,7 @@ const Tesla = ({ data }) => {
                     </div>
                 </Container>
             </Contact>
-            <Footer variants={fadeIn}>
+            <Footer>
                 <Container>
                     <div className="footer-wrapper">
                         <Subtitle>
