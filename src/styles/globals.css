@@ -16,6 +16,9 @@ body {
   --foreground: #0F0F0F;
   --foreground-50: rgba(15,15,15,0.5);
   --foreground-75: rgba(15,15,15,0.75);
+  --alert: rgba(217, 111, 34, 1);
+  --alert-bg1: rgba(217, 111, 34, 0.1);
+  --alert-bg2: rgba(217, 111, 34, 0.4);
 
   background-color: var(--bg);
   color: var(--foreground);
@@ -35,4 +38,7 @@ body.dark {
   --foreground: #ffffff;
   --foreground-50: rgba(255,255,255,0.5);
   --foreground-75: rgba(255,255,255,0.75);
+  --alert: rgba(246, 149, 78, 1);
+  --alert-bg1: rgba(246, 149, 78, 0.1);
+  --alert-bg1: rgba(246, 149, 78, 0.4);
 }

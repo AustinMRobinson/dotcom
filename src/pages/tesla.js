@@ -9,8 +9,8 @@ import { variant } from 'styled-system'
 
 import Layout from "../components/layout"
 import Container from "../components/container"
-import { Subtitle, SubtitleLg, Title, TitleMd, MotionTitleLg } from "../components/typography"
-import { fadeStagger, fadeIn, fadeInUp } from "../animations/animations"
+import { Subtitle, SubtitleLg, Title, TitleMd, MotionTitleLg, TitleSm } from "../components/typography"
+import { fadeStagger, fadeIn } from "../animations/animations"
 
 
 const Intro = styled(motion.section)`
@@ -22,40 +22,60 @@ const Intro = styled(motion.section)`
                 ${tw`text-center`}
             }
         }
-        .round1 {
-            ${tw`p-6 lg:p-12 rounded-lg mb-6 lg:mb-10`}
-            background: var(--bg3);
-            .top {
-                ${tw`cursor-pointer`}
-                .overline {
-                    ${tw`font-semibold uppercase tracking-wide mb-0 md:mb-1`}
-                    color: var(--mid-foreground);
-                    @media screen and (max-width: 768px) {
-                        ${tw`text-xs`}
-                    }
-                }
-                ${Title} {
+        .updates {
+            ${tw`space-y-3 p-4 md:p-8 lg:p-10 mb-10 rounded-lg`}
+            background: var(--bg2);
+            border: 2px solid var(--alert-bg2);
+            .title {
+                ${tw`py-2 px-3 lg:py-4 lg:px-5 rounded-lg cursor-pointer`}
+                background: var(--alert-bg1);
+                color: var(--alert);
+                border: 2px solid var(--alert-bg1);
+                ${TitleSm} {
                     ${tw`mb-0`}
                 }
             }
-            .bottom {
-                ${tw`mt-3 lg:mt-6 rounded-lg overflow-hidden`}
-                border: 1px solid var(--bg);
-                box-shadow: 0 0.75rem 1.25rem var(--light-bg);
-                iframe {
-                    min-height: 33.25rem;
-                    transition: min-height 0.3s ease-in-out;
-                    @media screen and (max-width: 996px) {
-                        min-height: 26.5rem;
+            .round1, .round2 {
+                ${tw`p-6 lg:p-12 rounded-lg`}
+                background: var(--bg3);
+                .top {
+                    .overline {
+                        ${tw`font-semibold uppercase tracking-wide mb-0 md:mb-1`}
+                        color: var(--mid-foreground);
+                        @media screen and (max-width: 768px) {
+                            ${tw`text-xs`}
+                        }
                     }
-                    @media screen and (max-width: 768px) {
-                        min-height: 22.5rem;
+                    ${Title} {
+                        ${tw`mb-0`}
                     }
-                    @media screen and (max-width: 576px) {
-                        min-height: 18rem;
+                }
+                .bottom {
+                    ${tw`mt-3 lg:mt-6 rounded-lg overflow-hidden`}
+                    iframe {
+                        min-height: 33.25rem;
+                        transition: min-height 0.3s ease-in-out;
+                        border: 1px solid var(--bg);
+                        box-shadow: 0 0.75rem 1.25rem var(--light-bg);
+                        @media screen and (max-width: 996px) {
+                            min-height: 26.5rem;
+                        }
+                        @media screen and (max-width: 768px) {
+                            min-height: 22.5rem;
+                        }
+                        @media screen and (max-width: 576px) {
+                            min-height: 18rem;
+                        }
+                        @media screen and (max-width: 420px) {
+                            min-height: 13rem;
+                        }
                     }
-                    @media screen and (max-width: 420px) {
-                        min-height: 13rem;
+                }
+            }
+            .round2 {
+                .bottom {
+                    .button-wrapper {
+                        ${tw`space-x-0 sm:space-x-4 space-y-3 sm:space-y-0`}
                     }
                 }
             }
@@ -102,6 +122,21 @@ const Intro = styled(motion.section)`
                             ${Subtitle} {
                                 ${tw`mb-2 md:mb-4 flex-grow`}
                             }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 640px) {
+        .updates {
+            .round2 {
+                .bottom {
+                    .button-wrapper {
+                        display: flex;
+                        flex-direction: column;
+                        button {
+                            width: 100%;
                         }
                     }
                 }
@@ -592,22 +627,39 @@ const Tesla = ({ data }) => {
             <Intro>
                 <Container>
                     <div className="intro-wrapper">
-                        <div className="top">
+                        <button className="top">
                             <MotionTitleLg>{intro.title}</MotionTitleLg>
-                        </div>
-                        <div className="round1">
-                            <motion.div className="top" onClick={() => setIsOpen(!isOpen)}>
-                                <div className="overline">Update</div>
-                                <Title>Round 1 Interview Deck</Title>
-                            </motion.div>
-                            <AnimatePresence initial={false}>
+                        </button>
+                        <div className="updates">
+                            <div className="title" onClick={() => setIsOpen(!isOpen)}>
+                                <TitleSm>Updates!</TitleSm>
+                            </div>
                             {isOpen && (
-                                <motion.div className="bottom"
-                                >
-                                    <iframe width="100%" height="100%" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FLCvBGyhy3D1oA23HBmMECe%2FComponent-Process-Presentation-Tesla%3Fnode-id%3D1%253A1876%26viewport%3D-4146%252C389%252C0.07698871195316315%26frame-preset-name%3DDesktop%26scaling%3Dscale-down-width" allowfullscreen></iframe>
-                                </motion.div>
-                            )}
+                            <AnimatePresence initial={false}>
+                                <div className="round2">
+                                    <motion.div className="top">
+                                        <div className="overline">Round 2</div>
+                                        <Title>Creating a design system for SpaceX</Title>
+                                    </motion.div>
+                                    <div className="bottom">
+                                        <div className="button-wrapper">
+                                            <a href="https://spacexds.vercel.app/"><Button>Visit website</Button></a>
+                                            <a href="https://www.figma.com/proto/HbCeOymAFEhYtSfneR9Ied/Deck?node-id=1%3A76&viewport=301%2C307%2C0.05184633284807205&scaling=contain"><Button variant="secondary">Read deck</Button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="round1">
+                                    <motion.div className="top">
+                                        <div className="overline">Round 1</div>
+                                        <Title>Designing a component from start to finish</Title>
+                                    </motion.div>
+                                        <motion.div className="bottom"
+                                        >
+                                            <iframe title="Component process deck" width="100%" height="100%" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FLCvBGyhy3D1oA23HBmMECe%2FComponent-Process-Tesla%3Fnode-id%3D1%253A1876%26viewport%3D-473%252C215%252C0.2576485574245453%26frame-preset-name%3DDesktop%26scaling%3Dscale-down-width" allowfullscreen></iframe>
+                                        </motion.div>
+                                </div>
                             </AnimatePresence>
+                            )}
                         </div>
                         <div className="questions">
                             {intro.questions.map(question => (
